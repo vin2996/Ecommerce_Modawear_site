@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ModaWear | Clothing E-Commerce</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body style="
+    background: url('{{ url_for('static', filename='images/bg.jpg') }}') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+">
+
+    <!-- 🔝 NAVIGATION BAR -->
+    <nav style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 1rem 0;
+    ">
+        <a href="/" style="margin-bottom: 0.5rem;">
+            <img src="{{ url_for('static', filename='images/logo.jpg') }}" alt="ModaWear Logo" style="height: 80px;">
+        </a>
+        <ul style="list-style: none; display: flex; gap: 30px; padding: 0; margin: 0;">
+            <li><a href="/" style="
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 3px #000;
+            ">Home</a></li>
+            <li><a href="/products" style="
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 3px #000;
+            ">Products</a></li>
+            <li><a href="/add_product" style="
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 3px #000;
+            ">Add Product</a></li>
+            <li><a href="/cart" style="
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 3px #000;
+            ">Cart 🛒</a></li>
+            {% if session.get('logged_in') %}
+            <li><a href="{{ url_for('my_purchases') }}" style="
+                color: white;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 1.2rem;
+                text-shadow: 1px 1px 3px #000;
+            ">My Purchases</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- 🔸 PAGE CONTENT with full transparency -->
+    <div class="container" style="padding: 2rem;">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+</html>

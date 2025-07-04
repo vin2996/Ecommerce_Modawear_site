@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="background-color: white; color: black; padding: 2rem; border-radius: 10px; max-width: 800px; margin: 2rem auto; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+    <h2 style="color: #e63b2e; border-bottom: 2px solid #e63b2e; padding-bottom: 0.5rem;">🧾 Checkout Summary</h2>
+
+    {% set total = 0 %}
+    {% if cart %}
+        {% for item in cart %}
+            {% set total = total + (item.price | int) %}
+            <div style="display: flex; align-items: center; gap: 1rem; margin: 1rem 0; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+                <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                <div style="flex-grow: 1;">
+                    <h3 style="margin: 0;">{{ item.name }}</h3>
+                    <p style="margin: 0; color: #e63b2e;">₱{{ item.price }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% elif product %}
+        {% set total = product.price | int %}
+        <div style="display: flex; align-items: center; gap: 1rem; margin: 1rem 0; border-bottom: 1px solid #ccc; padding-bottom: 1rem;">
+            <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+            <div style="flex-grow: 1;">
+                <h3 style="margin: 0;">{{ product.name }}</h3>
+                <p style="margin: 0; color: #e63b2e;">₱{{ product.price }}</p>
+            </div>
+        </div>
+    {% endif %}
+
+    <div style="margin-top: 2rem;">
+        <h3 style="margin-bottom: 1rem;">📝 Delivery Details</h3>
+
+        <form method="POST" action="{{ request.path }}">
+            <div style="margin-bottom: 1rem;">
+                <label for="name">Full Name</label><br>
+                <input type="text" name="name" id="name" required style="width: 100%; padding: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="address">Address</label><br>
+                <textarea name="address" id="address" rows="3" required style="width: 100%; padding: 0.5rem;"></textarea>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="contact">Contact Number</label><br>
+                <input type="text" name="contact" id="contact" required style="width: 100%; padding: 0.5rem;">
+            </div>
+
+            <h3 style="margin-top: 2rem;">📦 Shipping Fee: ₱50</h3>
+            <h3 style="margin-bottom: 1rem;">💰 Total Amount: <span style="color: #e63b2e;">₱{{ total + 50 }}</span></h3>
+
+            <button type="submit" style="margin-top: 1rem; background-color: #e63b2e; color: white; padding: 0.8rem 2rem; border: none; border-radius: 6px; font-size: 1.1rem;">
+                ✅ Confirm Order
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

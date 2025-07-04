@@ -1,0 +1,92 @@
+[
+    {
+        "items": [
+            {
+                "id": 1,
+                "name": "Default T-Shirt",
+                "price": "399",
+                "image": "images/tshirt.jpg"
+            }
+        ],
+        "name": "alvin",
+        "address": "pitogo",
+        "contact": "09997474838",
+        "total": 449
+    },
+    {
+        "items": [
+            {
+                "id": 4,
+                "name": "Mens Fashion hat",
+                "price": 500,
+                "image": "uploads/mens_fashion_hat.jpg"
+            }
+        ],
+        "name": "alvin",
+        "address": "pitogo",
+        "contact": "09997474838",
+        "total": 550
+    },
+    {
+        "items": [
+            {
+                "id": 6,
+                "name": "KOREAN SWEATER",
+                "price": 900,
+                "image": "uploads/sweater.jpg"
+            }
+        ],
+        "name": "alvin",
+        "address": "pitogo",
+        "contact": "09997474838",
+        "total": 950
+    },
+    {
+        "items": [
+            {
+                "id": 6,
+                "name": "KOREAN SWEATER",
+                "price": 900,
+                "image": "uploads/sweater.jpg"
+            },
+            {
+                "id": 7,
+                "name": "Fashion Trouser  ",
+                "price": 999,
+                "image": "uploads/korean_fashion_trouser.jpg"
+            }
+        ],
+        "name": null,
+        "address": null,
+        "contact": null,
+        "total": 1949
+    },
+    {
+        "items": [
+            {
+                "id": 9,
+                "name": "Cargo Pants (For Men)",
+                "price": 499,
+                "image": "uploads/cargo_pants.jpg"
+            }
+        ],
+        "name": "alvin",
+        "address": "pitogo",
+        "contact": "09997474838",
+        "total": 549
+    },
+    {
+        "items": [
+            {
+                "id": 10,
+                "name": "Luxury Mens Watch",
+                "price": 1050,
+                "image": "uploads/luxury_mens_watch.jpg"
+            }
+        ],
+        "name": null,
+        "address": null,
+        "contact": null,
+        "total": 1100
+    }
+]

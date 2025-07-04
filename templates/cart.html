@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2 style="text-align: center; margin-top: 2rem;">🛒 Your Shopping Cart</h2>
+
+    {% if cart %}
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 1.5rem; margin: 2rem auto; max-width: 700px;">
+            {% for item in cart %}
+                <div style="display: flex; align-items: center; gap: 1rem; width: 100%; background-color: white; padding: 1rem; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05);">
+                    <img src="{{ url_for('static', filename=item.image) }}" alt="{{ item.name }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
+                    <div>
+                        <h4 style="margin: 0; color: #333;">{{ item.name }}</h4>
+                        <p style="margin: 0; color: #e63b2e; font-weight: bold;">₱{{ item.price }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            <!-- Checkout Button -->
+            <form action="/checkout" method="POST" style="margin-top: 2rem;">
+                <button type="submit" style="padding: 1rem 2rem; font-size: 1.1rem; background-color: #e63b2e; color: white; border: none; border-radius: 8px; cursor: pointer; box-shadow: 0 4px 8px rgba(0,0,0,0.15);">
+                    ✅ Proceed to Checkout
+                </button>
+            </form>
+        </div>
+    {% else %}
+        <p style="text-align: center; margin: 2rem;">Your cart is empty.</p>
+    {% endif %}
+{% endblock %}

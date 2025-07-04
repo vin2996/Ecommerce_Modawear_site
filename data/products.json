@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "name": "Default T-Shirt",
+        "price": "399",
+        "image": "images/tshirt.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Default Hoodie",
+        "price": "599",
+        "image": "images/hoodie.jpg"
+    },
+    {
+        "id": 3,
+        "name": "WORLD BALANCE (Mens Shoes)",
+        "price": "1050",
+        "image": "uploads/shoes.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Mens Fashion hat",
+        "price": 500,
+        "image": "uploads/mens_fashion_hat.jpg"
+    },
+    {
+        "id": 5,
+        "name": "WORLD BALANCE (Mens Shoes)",
+        "price": 500,
+        "image": "uploads/shoes.jpg"
+    },
+    {
+        "id": 6,
+        "name": "KOREAN SWEATER",
+        "price": 900,
+        "image": "uploads/sweater.jpg"
+    },
+    {
+        "id": 7,
+        "name": "Fashion Trouser  ",
+        "price": 999,
+        "image": "uploads/korean_fashion_trouser.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Wide Leg Pants (For Wemen)",
+        "price": 799,
+        "image": "uploads/wide_leg_pants_for_wemen.jpg"
+    },
+    {
+        "id": 9,
+        "name": "Cargo Pants (For Men)",
+        "price": 499,
+        "image": "uploads/cargo_pants.jpg"
+    },
+    {
+        "id": 10,
+        "name": "Luxury Mens Watch",
+        "price": 1050,
+        "image": "uploads/luxury_mens_watch.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Orthopedic Sandals",
+        "price": 999,
+        "image": "uploads/orthopedic_sandals.jpg"
+    },
+    {
+        "id": 12,
+        "name": "Womens Heel Sandals",
+        "price": 799,
+        "image": "uploads/womens_heel_sandals.jpg"
+    }
+]

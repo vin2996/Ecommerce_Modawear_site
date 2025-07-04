@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>USER LOGIN</title> <!-- ✅ Confirmed -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #ffe3e3, #ffeded);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background-color: white;
+            padding: 2rem 3rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            color: #e63b2e;
+            margin-bottom: 1.5rem;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #444;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+        button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #e63b2e;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-bottom: 0.75rem;
+        }
+        button:hover {
+            background-color: #c53024;
+        }
+        .register-btn {
+            background-color: #f0ad4e;
+            margin-top: 0;
+        }
+        .register-btn:hover {
+            background-color: #d49436;
+        }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>USER LOGIN</h2> <!-- ✅ Confirmed -->
+        <form method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" required placeholder="Enter your username">
+
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required placeholder="Enter your password">
+
+            <button type="submit">Login</button>
+        </form>
+
+        <form action="{{ url_for('register') }}" method="GET">
+            <button type="submit" class="register-btn">Register</button>
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>

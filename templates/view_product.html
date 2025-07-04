@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 2rem auto; background-color: white; padding: 2rem; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center;">
+    <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" style="max-width: 100%; height: auto; border-radius: 10px;">
+    <h2 style="margin-top: 1rem;">{{ product.name }}</h2>
+    <p style="font-size: 1.5rem; color: #e63b2e; font-weight: bold;">₱{{ product.price }}</p>
+
+    <!-- Add to Cart Button -->
+    <a href="{{ url_for('add_to_cart', product_id=product.id) }}" class="button" style="margin-top: 1rem;">Add to Cart</a>
+    
+    <!-- Buy Now Button -->
+    <form method="GET" action="{{ url_for('buy_now', product_id=product.id) }}">
+    <button type="submit" class="button">Buy Now</button>
+    </form>
+
+    <!-- Back to Products -->
+    <br>
+    <a href="{{ url_for('product_list') }}" class="button" style="background-color: #aaa; margin-top: 1rem;">← Back to Products</a>
+</div>
+{% endblock %}

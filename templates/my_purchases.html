@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Purchases</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('{{ url_for('static', filename='images/bg.jpg') }}') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 2rem;
+            color: #fff;
+        }
+        h1 {
+            text-align: center;
+            color: #ffdddd;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .purchase-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            padding: 1rem;
+            text-align: center;
+            color: #333;
+            position: relative;
+        }
+        .card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .card h3 {
+            margin: 0.5rem 0;
+        }
+        .details {
+            font-size: 0.9rem;
+            color: #444;
+            margin-top: 1rem;
+            /* removed previous margin for adjustment */
+        }
+        /* Add flex style to details for button alignment */
+        .details-flex {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: #444;
+            margin-top: 1rem;
+        }
+        .cancel-btn {
+            background-color: #e63b2e;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0; /* reset margin */
+        }
+    </style>
+</head>
+<body>
+    <h1>My Purchases</h1>
+
+    {% if purchases %}
+    <div class="purchase-list">
+        {% for purchase in purchases %}
+            {% set purchase_idx = loop.index0 %}
+            {% if purchase["items"] %}
+                {% for item in purchase["items"] %}
+                <div class="card">
+                    <img src="{{ url_for('static', filename=item['image']) }}" alt="{{ item['name'] }}">
+                    <h3>{{ item['name'] }}</h3>
+                    <p>₱{{ item['price'] }}</p>
+                    <div class="details-flex">
+                        <p><strong>Name:</strong> {{ purchase['name'] }}</p>
+                        <p><strong>Address:</strong> {{ purchase['address'] }}</p>
+                        <p><strong>Contact:</strong> {{ purchase['contact'] }}</p>
+                        <p><strong>Total:</strong> ₱{{ purchase['total'] }}</p>
+                        <form action="{{ url_for('cancel_purchase', purchase_index=purchase_idx) }}" method="POST" style="margin:0;">
+                            <button type="submit" class="cancel-btn">Cancel Purchase</button>
+                        </form>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No items in this purchase.</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% else %}
+        <p style="text-align:center; color: #fff; text-shadow: 1px 1px 3px #000;">You have no purchases yet.</p>
+    {% endif %}
+</body>
+</html>

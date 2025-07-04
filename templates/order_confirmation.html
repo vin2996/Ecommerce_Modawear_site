@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div style="padding: 2rem;">
+        <h2>✅ Order Confirmed!</h2>
+        <p><strong>Name:</strong> {{ name }}</p>
+        <p><strong>Address:</strong> {{ address }}</p>
+        <p><strong>Contact:</strong> {{ contact }}</p>
+
+        <h3>🛒 Items Ordered:</h3>
+        <ul>
+            {% for product in cart %}
+                <li>{{ product.name }} - ₱{{ product.price }}</li>
+            {% endfor %}
+        </ul>
+
+        <p><strong>Shipping Fee:</strong> ₱50</p>
+        <p><strong>Total:</strong> ₱{{ total }}</p>
+
+        <a href="/" style="display: inline-block; margin-top: 1rem; padding: 0.5rem 1rem; background-color: #e63b2e; color: white; text-decoration: none; border-radius: 5px;">
+            Back to Home
+        </a>
+    </div>
+{% endblock %}

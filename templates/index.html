@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- 🔐 Login/Logout Section - Top Right -->
+<div style="display: flex; justify-content: flex-end; padding: 1rem; align-items: center;">
+    <!-- ⚙️ Settings Icon -->
+    <a href="/settings" title="Settings" style="margin-right: 1rem; font-size: 1.2rem; text-decoration: none;">⚙️</a>
+
+    {% if session.get('logged_in') %}
+        <a href="/logout" style="margin-left: 1rem; background-color: #e63b2e; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Logout</a>
+    {% else %}
+        <a href="/login" style="margin-left: 1rem; background-color: #e63b2e; color: white; padding: 0.5rem 1rem; border-radius: 4px; text-decoration: none;">Login</a>
+    {% endif %}
+</div>
+
+<!-- 🔥 ModaWear Deals of the Day Section -->
+<div style="background: linear-gradient(135deg, #ffe3e3, #ffeded), url('https://www.transparenttextures.com/patterns/white-wall-3.png'); background-blend-mode: overlay; text-align: center; padding: 3rem 1rem; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+    <h1 style="font-family: 'Anton', sans-serif; font-size: 3rem; font-weight: bold; color: #e63b2e; text-shadow: 1px 1px 2px white;">
+        MODAWEAR DEALS OF THE DAY!
+    </h1>
+    <p style="font-size: 1.2rem; margin-bottom: 1rem; color: #333;">Shop With Confidence!</p>
+    <a href="/products" class="button" style="padding: 1rem 2rem; font-size: 1.1rem; background-color: #e63b2e; color: white; border-radius: 5px; text-decoration: none;">🛒 Shop Now</a>
+</div>
+
+<!-- 🔍 Search Bar -->
+<form method="GET" action="{{ url_for('index') }}" style="margin: 2rem auto 1rem; text-align: center;">
+    <input
+        type="text"
+        name="q"
+        placeholder="Search products..."
+        value="{{ search_query }}"
+        style="padding: 0.5rem; width: 60%; max-width: 400px; border-radius: 6px; border: 1px solid #ccc;"
+    >
+    <button type="submit" style="padding: 0.5rem 1rem; background-color: #e63b2e; color: white; border: none; border-radius: 6px; cursor: pointer;">
+        Search
+    </button>
+</form>
+
+<!-- 📦 Trending Now -->
+<div style="background: linear-gradient(to bottom right, rgba(255,255,255,0.9), rgba(255,255,255,0.95)), url('https://www.transparenttextures.com/patterns/diagonal-noise.png'); background-blend-mode: overlay; padding: 2rem; margin-top: 2rem; border-radius: 10px;">
+    <h2 style="text-align: center; font-weight: bold; margin-bottom: 2rem; color: #333;">🎉 Trending Now</h2>
+    <div class="product-grid" style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center;">
+        {% for product in products %}
+            <div class="product-card" style="background-color: white; border-radius: 10px; padding: 1rem; width: 200px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); transition: transform 0.3s;">
+                <img src="{{ url_for('static', filename=product.image) }}" alt="{{ product.name }}" style="width: 100%; border-radius: 8px;">
+                <h3 style="color: #333;">{{ product.name }}</h3>
+                <p style="color: #e63b2e; font-weight: bold; font-size: 1.2rem;">₱{{ product.price }}</p>
+                <p style="font-size: 0.9rem; color: #666;">⭐ 4.5 | In Stock</p>
+                <a href="/add_to_cart/{{ product.id }}" class="button" style="margin-bottom: 0.5rem;">Add to Cart</a>
+                <a href="/product/{{ product.id }}" class="button" style="background-color: gray; margin-bottom: 0.5rem;">View</a>
+                <a href="/checkout_single/{{ product.id }}" class="button" style="background-color: green; color: white;">Buy Now</a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
